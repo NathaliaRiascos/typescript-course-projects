@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasker</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <p><label for="new-task">Add a new task</label></p>
+    <input type="text" id="new-task" />
+    <button id="add-task">Add Task</button>
+
+    <h3>Tasks</h3>
+    <ul id="incomplete-tasks">
+    <li>
+      <input type="checkbox"/>
+      <label for="">Exercise</label>
+    </li>
+    <li>
+      <input type="checkbox" />
+      <label for="">Buy more courses from Hector</label>
+    </li>
+  </ul>
+
+  <h3>Completed Tasks</h3>
+  <ul id="completed-tasks">
+    <li>
+      <input type="checkbox" />
+      <label for="">Buy TypeScript Courses</label>
+    </li>
+    <li>
+      <input type="checkbox" />
+      <label for="">View TED Talk</label>
+    </li>
+  </ul>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
