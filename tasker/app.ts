@@ -21,12 +21,55 @@ class TaskManager {
   }
 }
 
+class HTMLHelper {
+  static createTaskItem(task:TodoItem):HTMLLIElement {
+    const listItem = document.createElement('li')
+    const checkBox = document.createElement('input');
+
+    checkBox.addEventListener('change', () => {
+      if(checkBox.checked) {
+        task.isCompleted = true        
+        displayTasks()
+      }
+    })
+    const label =  document.createElement('label')
+    checkBox.type = 'checkbox'
+    label.innerText = task.task
+
+    !task.isCompleted? listItem.appendChild(checkBox) : null
+    listItem.appendChild(label)
+
+    return listItem
+  }
+}
+
 const taskInput = <HTMLInputElement>document.querySelector('#new-task')
 const addButton = document.querySelector('#add-task')!
-const completedTask = document.querySelector('#completed-task')
 
+const incompleteTasksHolder = document.querySelector('#incomplete-tasks')!
+const completedTasksHolder = document.querySelector('#completed-tasks')!
 const taskManager = new TaskManager
 
 addButton.addEventListener('click', () => {
-  console.log(taskInput.value)
+  taskManager.addTask(taskInput.value)
+  displayTasks()
+  clear()
 })
+
+
+function displayTasks() {
+  completedTasksHolder.innerHTML = ''
+  incompleteTasksHolder.innerHTML = ''
+  
+  taskManager.tasks.forEach(task => {
+    let listItem = HTMLHelper.createTaskItem(task)
+
+    task.isCompleted? 
+      completedTasksHolder.appendChild(listItem)
+    : incompleteTasksHolder.appendChild(listItem)
+  })
+}
+
+function clear(){
+  taskInput.value = ''
+}
