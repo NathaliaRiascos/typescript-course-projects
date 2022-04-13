@@ -86,7 +86,7 @@ btnCircle?.addEventListener('click', () => {
   )
   circle.draw()
 })
-
+ 
 btnText?.addEventListener('click', () => {
   const text = new TextShape(ctx,
     MathHelper.generateRandom(), 
